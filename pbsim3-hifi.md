@@ -111,7 +111,7 @@ pigz -p 8 hg38.fastq
 ## Single Command Execution
 
 ```bash
-ref=hg38.fa; fq=hg38.fq; count=46; pbsim --strategy wgs --method qshmm --qshmm pbsim3/data/QSHMM-RSII.model --depth 15 --genome $ref --pass-num 7; rm -f *.ref *.maf; for i in $(seq -f "%04g" 1 $count); do if [ -f "sd_$i.sam" ]; then echo "Processing sd_$i.sam"; samtools view -b -o sd_$i.bam sd_$i.sam; rm -f sd_$i.sam; samtools sort -o sd_${i}_sorted.bam sd_${i}.bam; rm -f sd_$i.bam; fi done; samtools merge sd_merged_sorted.bam *_sorted.bam; ccs sd_merged_sorted.bam sd_merged_sorted.ccs.bam; samtools bam2fq sd_merged_sorted.ccs.bam > $fq; pigz -p 8 $fq;
+ref=hg38.fa; fq=hg38.fq; count=46; prefix=node3; pbsim --strategy wgs --method qshmm --qshmm pbsim3/data/QSHMM-RSII.model --depth 15 --genome ${ref} --pass-num 7 --prefix ${prefix}; rm -f *.ref *.maf; for i in $(seq -f "%04g" 1 ${count}); do if [ -f "${prefix}_${i}.sam" ]; then echo "Processing ${prefix}_${i}.sam"; samtools view -b -o ${prefix}_${i}.bam ${prefix}_${i}.sam; rm -f ${prefix}_${i}.sam; fi done; samtools merge ${prefix}_merged.bam ${prefix}_*.bam; for i in $(seq -f "%04g" 1 ${count}); do rm -f "${prefix}_${i}.bam"; done; samtools sort -o ${prefix}_merged_sorted.bam ${prefix}_merged.bam; rm -f ${prefix}_merged.bam; ccs ${prefix}_merged_sorted.bam ${prefix}_merged_sorted.ccs.bam; rm -f ${prefix}_merged_sorted.bam; samtools bam2fq ${prefix}_merged_sorted.ccs.bam > ${fq}; rm -f ${prefix}_merged_sorted.ccs.bam; pigz -p 8 ${fq};
 ```
 
 # License
