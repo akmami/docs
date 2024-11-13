@@ -100,7 +100,7 @@ Convert the CCS BAM file into a FASTQ file using samtools:
 samtools bam2fq sd_merged_sorted.ccs.bam > hg38.fastq
 ```
 
-## 7. Compress the FASTQ File
+### 7. Compress the FASTQ File
 
 Finally, compress the generated FASTQ file using `pigz` to speed up compression with multiple threads:
 
@@ -108,7 +108,7 @@ Finally, compress the generated FASTQ file using `pigz` to speed up compression 
 pigz -p 8 hg38.fastq
 ```
 
-# Single Command Execution
+## Single Command Execution
 
 ```bash
 ref=hg38.fa; fq=hg38.fq; count=46; pbsim --strategy wgs --method qshmm --qshmm pbsim3/data/QSHMM-RSII.model --depth 15 --genome $ref --pass-num 7; rm -f *.ref *.maf; for i in $(seq -f "%04g" 1 $count); do if [ -f "sd_$i.sam" ]; then echo "Processing sd_$i.sam"; samtools view -b -o sd_$i.bam sd_$i.sam; rm -f sd_$i.sam; samtools sort -o sd_${i}_sorted.bam sd_${i}.bam; rm -f sd_$i.bam; fi done; samtools merge sd_merged_sorted.bam *_sorted.bam; ccs sd_merged_sorted.bam sd_merged_sorted.ccs.bam; samtools bam2fq sd_merged_sorted.ccs.bam > $fq; pigz -p 8 $fq;
