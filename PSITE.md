@@ -7,7 +7,7 @@ The simulation includes generating a coalescent tree, filtering variants, creati
 
 1. **Download Reference Files**:
    - **HG001_GRCh38_1_22_v4.2.1_all.vcf.gz** (Germline variants for the normal genome)
-     - Available at: `[Download from NCBI](https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/SupplementaryFiles/HG001_GRCh38_1_22_v4.2.1_all.vcf.gz)`
+     - Available at: [Download from NCBI](https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/SupplementaryFiles/HG001_GRCh38_1_22_v4.2.1_all.vcf.gz)
    - **COSMIC Non-Coding Variants** (Somatic mutation reference for cancer cells)
      - [Download from COSMIC](https://cancer.sanger.ac.uk/cosmic/download/cosmic/v100/noncodingvariantsvcf) (login required).
 
