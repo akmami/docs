@@ -54,40 +54,55 @@ pbsim [options]
 #### General Options
 
 -- `prefix`: Set output file prefix (default: "sd").
+
 -- `id-prefix`: Prefix for read IDs (default: "S").
+
 -- `seed`: Seed for the random number generator (default: Unix time).
 
 #### Whole Genome Sequencing Options
 
 -- `strategy`: Set sequencing strategy to `wgs` (whole genome sequencing).
+
 -- `genome`: Input genome file in FASTA format.
+
 -- `depth`: Set coverage depth (default: 20.0).
+
 -- `length-min/--length-max`: Minimum and maximum read length (default: 100, 1,000,000).
 
 #### Transcriptome Sequencing Options
 
 -- `strategy`: Set to `trans` for transcriptome sequencing.
+
 -- `transcript`: Input transcript file in original format.
+
 -- `length-min/--length-max`: Minimum and maximum read length (default: 100, 1,000,000).
 
 #### Template Sequencing Options
 
 -- `strategy`: Set to `templ` for template sequencing.
+
 -- `template`: Input template file in FASTA format.
 
 #### Quality Score Model Options
 
 -- `method`: Set to `qshmm` for quality score modeling.
+
 -- `qshmm`: Quality score model file.
+
 -- `length-mean/--length-sd`: Mean and standard deviation of read length (default: 9000, 7000).
+
 -- `accuracy-mean`: Mean accuracy (default: 0.85).
+
 -- `pass-num`: Number of sequencing passes (default: 1).
+
 -- `difference-ratio`: Error ratio as substitution:insertion (default: 6:55:39).
+
 -- `hp-del-bias`: Bias in homopolymer deletions (default: 1).
 
 #### Error Model Options
 
 -- `method`: Set to `errhmm` for error modeling.
+
 -- `errhmm`: Error model file.
 
 Other options are similar to those in the quality score model.
@@ -97,9 +112,13 @@ Other options are similar to those in the quality score model.
 ##### (Applicable for `wgs` strategy only)
 
 -- `sample`: Input FASTQ sample file.
+
 -- `sample-profile-id`: Profile ID for sampled reads.
+
 -- `accuracy-min/--accuracy-max`: Minimum and maximum accuracy (default: 0.75, 1.0).
+
 -- `difference-ratio`: Error ratio for sample-based method (default: 6:55:39).
+
 -- `hp-del-bias`: Bias in homopolymer deletions for sample-based reads (default: 1).
 
 #### Sample Command
