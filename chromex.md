@@ -17,7 +17,7 @@ It outputs the selected chromosomes in FASTA format directly to the terminal or 
 To run this script, use the following command in the terminal:
 
 ```bash
-python3 -c "import sys; from Bio import SeqIO; [print(f'>{rec.id}\n{rec.seq}') for rec in SeqIO.parse(sys.argv[1], 'fasta') if rec.id in sys.argv[2:]]" input.fasta chr1 chr2 chrX > output.fasta
+python3 -c "import sys; from Bio import SeqIO; [print(f'>{rec.id}') or [print(''.join(rec.seq[i:i+60])) for i in range(0, len(rec.seq), 60)] for rec in SeqIO.parse(sys.argv[1], 'fasta') if rec.id in sys.argv[2:]]" input.fasta chr1 chr2 chrX > output.fasta
 ```
 
 ### Parameters
