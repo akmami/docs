@@ -31,7 +31,7 @@ Add following configurations to the config file
 Host [server]
   HostName HOST_NAME
   User USER
-  IdentityFile ~/.ssh/id_ed25519_[server].pub
+  IdentityFile ~/.ssh/id_ed25519_[server]
 ```
   
 Also, add new key to your machine, so, it can identify the key 
@@ -43,6 +43,21 @@ ssh-add -k ~/.ssh/id_ed25519_[server]
 For some cases or all the time, machine forgot the identity of the keys when the terminal is quit. Hence, each time, you might have to call ssh-add command before, each time you want to connect server.
 
 Now, you have to add ssh key to the server.
+
+Please run the following command and copy the content being printed.
+
+```
+cat ~/.ssh/id_ed25519_[server].pub
+```
+
+and you paste to the servers authorized keys file.
+
+```
+# login to server
+nano ~/.ssh/authorized_keys
+```
+
+and paste the content of the ssh public key that you copied to there. Then, save it and exit (Ctrl X, y, enter)
 
 You can connect to server with password authentication. After adding the key to the authorized_keys, you can connect to the server by executing following command:
 
